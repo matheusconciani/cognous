@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-page: #FAF7F2;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F2EDE4;
+    --bg-card: #FFFFFF;
+    --border-main: #E2DDD5;
+    --border-strong: #CDC5B7;
+    --text-primary: #14241B;
+    --text-secondary: #3D4F44;
+    --text-muted: #53675C;
+    --accent: #B04B1D;
+    --accent-hover: #963C14;
+    --accent-soft: #F9EFE9;
+    --badge-bg: #EAE5DC;
+    --badge-text: #1E2E24;
+  }
+
+  .dark {
+    --bg-page: #0E1511;
+    --bg-surface: #151F19;
+    --bg-subtle: #1C2821;
+    --bg-card: #151F19;
+    --border-main: #24352B;
+    --border-strong: #32473A;
+    --text-primary: #F0EDE6;
+    --text-secondary: #C3CEC7;
+    --text-muted: #9BB0A3;
+    --accent: #B04B1D;
+    --accent-hover: #963C14;
+    --accent-soft: #2E1B13;
+    --badge-bg: #1F2D24;
+    --badge-text: #E5EDE8;
+  }
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-editorial {
+  font-family: 'Newsreader', Georgia, serif;
+}
+
+.font-handwritten {
+  font-family: 'Caveat', cursive, sans-serif;
+}
+
+.font-kiddy {
+  font-family: 'Fredoka', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Playful school stickers with paper cut feel and tactile drop shadow */
+.school-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(20, 36, 27, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.school-sticker:hover {
+  transform: translateY(-2px) scale(1.05) rotate(1deg);
+  box-shadow: 0 8px 18px rgba(20, 36, 27, 0.12);
+}
+
+.dark .school-sticker {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* Notebook paper doodle grid texture - subtle school notebook vibe */
+.notebook-ruled-bg {
+  background-image: linear-gradient(to bottom, rgba(20, 36, 27, 0.04) 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+
+.dark .notebook-ruled-bg {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Accessible and high-contrast focus rings complying with R-32 */
+:focus-visible {
+  outline: 2px solid #B04B1D;
+  outline-offset: 3px;
+}
+
+/* Interactive elements hit targets complying with R-03 and WCAG touch target */
+button, a, input, select, textarea {
+  min-height: 44px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+/* Smooth scrolling when reduced motion is not requested */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
